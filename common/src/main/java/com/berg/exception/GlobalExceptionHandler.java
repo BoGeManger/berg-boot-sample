@@ -4,8 +4,6 @@ import com.berg.message.MessageConstant;
 import com.berg.message.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -59,27 +57,7 @@ public class GlobalExceptionHandler {
 				errList.add(item.getDefaultMessage());
 			});
 			result = new Result(MessageConstant.PARAMETER_ERROR_CODE, StringUtils.join(errList, ";"), null);
-		}else if (ex instanceof ConstraintViolationException) {
-			if(islog) {
-				log.error("请求参数错误", ex);
-			}
-			ConstraintViolationException e = (ConstraintViolationException) ex;
-			String errMsg = e.getConstraintViolations().stream().map((cv) -> cv.getMessage()).collect(Collectors.joining(";"));
-			result = new Result(MessageConstant.PARAMETER_ERROR_CODE, errMsg, null);
-		} else if (ex instanceof AuthenticationException) {
-			if(islog) {
-				log.error("授权错误", ex);
-			}
-			AuthenticationException e = (AuthenticationException) ex;
-			String errMsg = e.getMessage();
-			result = new Result(MessageConstant.UNAUTH_ERROR_CODE, errMsg, null);
-		} else if (ex instanceof UnauthorizedException) {
-			if(islog) {
-				log.error("授权错误", ex);
-			}
-			UnauthorizedException e = (UnauthorizedException) ex;
-			result = new Result(MessageConstant.USER_FRIENDLY_ERROR_CODE, "您没有对应的权限操作，请联系管理员授权", null);
-		} else {
+		}else {
 			if(islog) {
 				log.error("运行异常", ex);
 			}
