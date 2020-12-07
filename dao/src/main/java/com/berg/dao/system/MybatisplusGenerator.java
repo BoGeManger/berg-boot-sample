@@ -74,7 +74,7 @@ public class MybatisplusGenerator {
         //数据库类型
         String driver = "mysql";
         //数据库访问地址
-        String url = "jdbc:mysql://localhost:3306/basedb?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
+        String url = "jdbc:mysql://localhost:3306/bootsampledb?useUnicode=true&serverTimezone=GMT&useSSL=false&characterEncoding=utf8";
         //数据库驱动
         String driverName = "com.mysql.cj.jdbc.Driver";
         //数据库用户名
