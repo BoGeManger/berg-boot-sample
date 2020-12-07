@@ -73,7 +73,7 @@ public class ${cfg.model}ServiceImpl implements ${cfg.model}Service {
         Boolean isAdd = input.getId()==0?true:false;
         LocalDateTime now = LocalDateTime.now();
         ${entity} ${cfg.entityName} = new ${entity}();
-        BeanUtils.copyProperties(input,userTbl);
+        BeanUtils.copyProperties(input,${cfg.entityName});
         if(isAdd){
             ${cfg.entityName}.setCreateTime(now);
             ${cfg.entityName}.setCreateUser(operator);
@@ -89,7 +89,7 @@ public class ${cfg.model}ServiceImpl implements ${cfg.model}Service {
     * @param id
     */
     @Override
-    public void delUser(Integer id) {
+    public void del${cfg.model}(Integer id) {
         ${entity} ${cfg.entityName} = new ${entity}();
         ${cfg.entityName}.setId(id);
         ${cfg.entityName}.setDelTime(LocalDateTime.now());
