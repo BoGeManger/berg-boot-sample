@@ -7,7 +7,7 @@
 |common|公共类|||
 |model|实体|||
 |dao|数据交互|||
-|system|后台服务|43000|0|
+|system|后台服务|40000|0|
 
 * 使用分布式id生成需配置workerId和datacenterId，需保证每个服务workerId和datacenterId组合均不一致，docker容器初始化时workerId为默认设置，datacenterId则根据端口号生成，如40001的datacenterId即为1，以此规则命名
 
