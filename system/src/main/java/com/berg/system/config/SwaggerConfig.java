@@ -1,6 +1,7 @@
 package com.berg.system.config;
 
 import com.berg.common.swagger.ErrorEnum;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -20,15 +21,27 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
+@EnableKnife4j
 @ConditionalOnProperty(prefix = "swagger", name ="enabled" ,havingValue = "true",matchIfMissing = true)
 public class SwaggerConfig {
 
-    public static final String VERSION = "1.0.0";
+    List responseMessageList = getResponseMessageList();
+
+    List getResponseMessageList(){
+        List responseMessageList = new ArrayList<>();
+        Arrays.stream(ErrorEnum.values()).forEach(errorEnum -> {
+            responseMessageList.add(
+                    new ResponseMessageBuilder().code(errorEnum.getKey()).message(errorEnum.getValue()).responseModel(
+                            new ModelRef(errorEnum.getValue())).build()
+            );
+        });
+        return responseMessageList;
+    }
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("system接口文档")
-                .version(VERSION)
+                .version("1.0.0")
                 .build();
     }
 
@@ -40,14 +53,6 @@ public class SwaggerConfig {
 //                .modelRef(new ModelRef("string")).parameterType("header")
 //                .required(true).build();//required表示是否必填，defaultvalue表示默认值
 //        pars.add(ticketPar.build());//添加完此处一定要把下边的带***的也加上否则不生效
-
-        List responseMessageList = new ArrayList<>();
-        Arrays.stream(ErrorEnum.values()).forEach(errorEnum -> {
-            responseMessageList.add(
-                    new ResponseMessageBuilder().code(errorEnum.getKey()).message(errorEnum.getValue()).responseModel(
-                            new ModelRef(errorEnum.getValue())).build()
-            );
-        });
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
