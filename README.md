@@ -1,7 +1,7 @@
 #Spring Boot示例简单项目
 * 不包含中间件，只有数据库及其他常用功能
 
-###目录结构
+### 目录结构
 ├── common 公共应用<br>
 │   ├─ all-common 公共应用所有引用<br>
 │   ├─ application 基础服务应用<br>
