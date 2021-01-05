@@ -36,10 +36,10 @@
  * 容器化部署工具：Docker
  * 数据库：MySQL
  * 服务框架：Spring Boot
- * Mybatis插件：Mybatis Plus
+ * Mybatis插件：[Mybatis Plus](https://baomidou.com/guide/)
  * 分页插件：PageHelper
  * 多数据源组件：dynamic datasource
  * 接口文档组件：knife4j
  * JDBC组件：Druid 
- * 公共工具组件：Hutool 
+ * 公共工具组件：[Hutool](https://www.hutool.cn/docs/#/) 
  * 验证组件：Hibernate Validator
