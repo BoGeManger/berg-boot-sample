@@ -1,5 +1,5 @@
 server:
-  port: 40000
+  port: 42000
   servlet:
     context-path: /system
   tomcat:
