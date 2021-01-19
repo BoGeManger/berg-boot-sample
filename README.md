@@ -10,9 +10,16 @@
 │   ├─ all-dao 数据交互所有引用<br>
 │   ├─ base-dao 基础数据交互引用<br>
 │   └─ system-dao 后台系统数据交互<br>
-├── model 实体层<br>
-├── sql 数据脚本<br>
-└── system 后台服务<br>
+├── generator 代码生成<br>
+│   ├─ base-generator 基础代码生成引用<br>
+│   └─ generator-modules 代码生成模块<br>
+├── model 公共实体层<br>
+│   ├─ all-model 所有实体引用<br>
+│   ├─ mapstruct 实体映射层<br>
+│   └─ vo 表现层对象<br>
+├── modules 业务模块层<br>
+│   └─ system 后台服务<br>
+└── sql 数据脚本<br>
 
 ### 服务划分
 |名称|定义|端口|workerId|
